@@ -10,7 +10,7 @@ namespace FunctionApp.Tests
 {
     public sealed class ConfigurationTests
     {
-        public readonly static IEnumerable<object[]> _testCases = typeof(Configuration)
+        public readonly static IEnumerable<object[]> AzureFunctionTypes = typeof(Configuration)
                 .Assembly
                 .GetTypes()
                 .Where(ContainsAzureFunction)
@@ -21,7 +21,7 @@ namespace FunctionApp.Tests
             => type.GetMethods().Any(method => method.GetCustomAttributes(typeof(FunctionNameAttribute), true).Length > 0);
 
         [Theory]
-        [MemberData(nameof(_testCases))]
+        [MemberData(nameof(AzureFunctionTypes))]
         public void Configure_ConfiguresDependenciesFor_AllAzureFunctions(Type azureFunctionType)
         {
             var services = new ServiceCollection();
