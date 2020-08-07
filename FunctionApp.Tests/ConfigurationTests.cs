@@ -22,7 +22,7 @@ namespace FunctionApp.Tests
 
         [Theory]
         [MemberData(nameof(AzureFunctionTypes))]
-        public void Configure_ConfiguresDependenciesFor_AllAzureFunctions(Type azureFunctionType)
+        public void Apply_ConfiguresDependenciesFor_SpecifiedAzureFunctionType(Type azureFunctionType)
         {
             var services = new ServiceCollection();
             Configuration.Apply(services);
