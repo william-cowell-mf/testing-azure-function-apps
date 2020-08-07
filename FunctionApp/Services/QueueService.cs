@@ -6,7 +6,7 @@ namespace FunctionApp.Services
     {
         void IQueueService.DoSomethingWithQueueMessage(string message)
         {
-            Console.WriteLine("Queue received: {0}", message);
+            Console.WriteLine("Received message from queue: {0}", message);
         }
     }
 }
