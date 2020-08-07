@@ -10,8 +10,9 @@ namespace FunctionApp
         {
             services.AddScoped<MyHttpFunction>();
             services.AddScoped<IFuncService, FuncService>();
+
             services.AddScoped<MyQueueFunction>();
-            services.AddSingleton<string>("World!");
+            services.AddScoped<IQueueService, QueueService>();
         }
     }
 }

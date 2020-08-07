@@ -1,4 +1,5 @@
 using System;
+using FunctionApp.Services;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 
@@ -6,9 +7,11 @@ namespace FunctionApp.Funcs
 {
     public sealed class MyQueueFunction
     {
-        public MyQueueFunction(string name)
+        private readonly IQueueService _queueService;
+
+        public MyQueueFunction(IQueueService queueService)
         {
-            Console.WriteLine("Constructing instance: {0}", name);
+            _queueService = queueService;    
         }
 
         [FunctionName("MyQueueFunction")]
