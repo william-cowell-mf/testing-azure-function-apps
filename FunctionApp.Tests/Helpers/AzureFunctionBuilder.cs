@@ -1,24 +1,26 @@
 using System;
 using System.Linq;
+using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FunctionApp.Tests.Helpers
 {
     public class AzureFunctionBuilder
     {
-        private readonly ServiceCollection _services;
+        private readonly ServiceCollection _services = new ServiceCollection();
 
         public AzureFunctionBuilder()
         {
-            _services = new ServiceCollection();
             Configuration.Apply(_services);    
         }
 
         public AzureFunctionBuilder Use<TDependency>(TDependency instance) where TDependency : class
         {
-            var registration = _services.First(descriptor => descriptor.ServiceType == typeof(TDependency));
+            var registration = _services.FirstOrDefault(descriptor => descriptor.ServiceType == typeof(TDependency));
             
-            _services.Remove(registration);
+            if (registration != null)
+                _services.Remove(registration);
+            
             _services.AddSingleton<TDependency>(instance);
 
             return this;
@@ -26,7 +28,7 @@ namespace FunctionApp.Tests.Helpers
 
         public TService Build<TService>() where TService : class
         {
-            return (TService)Build(typeof(TService));
+            return Build(typeof(TService)).As<TService>();
         }
 
         public object Build(Type type)
