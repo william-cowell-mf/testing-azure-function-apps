@@ -9,7 +9,7 @@ namespace FunctionApp
         public static void Apply(IServiceCollection services)
         {
             services.AddScoped<MyHttpFunction>();
-            services.AddScoped<IFuncService, FuncService>();
+            services.AddScoped<IHttpService, HttpService>();
 
             services.AddScoped<MyQueueFunction>();
             services.AddScoped<IQueueService, QueueService>();

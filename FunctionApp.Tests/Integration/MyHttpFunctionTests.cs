@@ -17,7 +17,7 @@ namespace FunctionApp.Tests.Unit
         public async Task Run_ReturnsResponse_FromService()
         {
             var expectedResponseBody = "some response";
-            var fakeService = Substitute.For<IFuncService>();
+            var fakeService = Substitute.For<IHttpService>();
             fakeService
                 .GetResponse(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(expectedResponseBody);

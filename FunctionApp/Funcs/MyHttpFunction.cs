@@ -11,9 +11,9 @@ namespace FunctionApp.Funcs
 {
     public sealed class MyHttpFunction
     {
-        private readonly IFuncService _service;
+        private readonly IHttpService _service;
 
-        public MyHttpFunction(IFuncService service)
+        public MyHttpFunction(IHttpService service)
         {
             _service = service;    
         }

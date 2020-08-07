@@ -2,9 +2,9 @@ using Newtonsoft.Json;
 
 namespace FunctionApp.Services
 {
-    internal sealed class FuncService : IFuncService
+    internal sealed class HttpService : IHttpService
     {
-        string IFuncService.GetResponse(string name, string requestBody)
+        string IHttpService.GetResponse(string name, string requestBody)
         {
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             name = name ?? data?.name;
