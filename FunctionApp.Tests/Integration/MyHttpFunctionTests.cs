@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
-namespace FunctionApp.Tests.Funcs
+namespace FunctionApp.Tests.Unit
 {
     public sealed class MyHttpFunctionTests
     {

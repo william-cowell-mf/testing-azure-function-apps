@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
-namespace FunctionApp.Tests.Funcs
+namespace FunctionApp.Tests.Unit
 {
     public sealed class MyQueueFunctionTests
     {
@@ -15,14 +15,12 @@ namespace FunctionApp.Tests.Funcs
         [InlineData("hello world")]
         public void Run_InvokesQueueService_WithQueueMessage(string queueMessage)
         {
-            var service = Substitute.For<IQueueService>();
-            var function = new AzureFunctionBuilder()
-                .Use(service)
-                .Build<MyQueueFunction>();
+            var fakeService = Substitute.For<IQueueService>();
+            var function = new MyQueueFunction(fakeService);
 
             function.Run(queueMessage, Substitute.For<ILogger>());
 
-            service
+            fakeService
                 .Received()
                 .DoSomethingWithQueueMessage(queueMessage);
         }
