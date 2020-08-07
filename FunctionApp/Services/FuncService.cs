@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace MyFunctionApp.Services
+namespace FunctionApp.Services
 {
     internal sealed class FuncService : IFuncService
     {

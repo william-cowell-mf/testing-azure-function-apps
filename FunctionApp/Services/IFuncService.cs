@@ -1,4 +1,4 @@
-namespace MyFunctionApp.Services
+namespace FunctionApp.Services
 {
     public interface IFuncService
     {
