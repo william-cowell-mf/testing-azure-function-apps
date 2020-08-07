@@ -29,7 +29,6 @@ namespace FunctionApp.Tests
             Configuration.Apply(services);
 
             var provider = services.BuildServiceProvider();
-
             var function = provider.GetService(azureFunctionType);
             
             function
