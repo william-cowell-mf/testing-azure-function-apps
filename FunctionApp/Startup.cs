@@ -1,6 +1,4 @@
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
-using MyFunctionApp.Services;
 
 [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
 
@@ -10,7 +8,7 @@ namespace FunctionApp
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.Services.AddScoped<IFuncService, FuncService>();
+            Configuration.Apply(builder.Services);
         }
     }
 }
