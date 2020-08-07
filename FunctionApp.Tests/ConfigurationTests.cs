@@ -23,7 +23,7 @@ namespace FunctionApp.Tests
 
         [Theory]
         [MemberData(nameof(_testCases))]
-        public void Configure_ConfiguresDependenciesFor_MyHttpFunction(Type azureFunctionType)
+        public void Configure_ConfiguresDependenciesFor_AllAzureFunctions(Type azureFunctionType)
         {
             var services = new ServiceCollection();
             Configuration.Apply(services);
