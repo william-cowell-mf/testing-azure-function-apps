@@ -1,6 +1,5 @@
 using FunctionApp.Funcs;
 using FunctionApp.Services;
-using FunctionApp.Tests.Helpers;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;

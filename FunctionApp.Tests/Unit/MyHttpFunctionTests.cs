@@ -14,9 +14,11 @@ namespace FunctionApp.Tests.Integration
     public sealed class MyHttpFunctionTests
     {
         [Fact]
-        public async Task Run_ReturnsResponse_FromService()
+        [InlineData("input")]
+        [InlineData("example")]
+        [InlineData("hello world")]
+        public async Task Run_ReturnsResponse_FromService(string expectedResponseBody)
         {
-            var expectedResponseBody = "some response";
             var fakeService = Substitute.For<IHttpService>();
             fakeService
                 .GetResponse(Arg.Any<string>(), Arg.Any<string>())
