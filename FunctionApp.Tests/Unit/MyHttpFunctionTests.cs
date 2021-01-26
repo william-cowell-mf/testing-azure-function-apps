@@ -13,7 +13,7 @@ namespace FunctionApp.Tests.Integration
 {
     public sealed class MyHttpFunctionTests
     {
-        [Fact]
+        [Theory]
         [InlineData("input")]
         [InlineData("example")]
         [InlineData("hello world")]
